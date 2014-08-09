@@ -1,27 +1,17 @@
-<html>
-<body>
-<?
-// データベースに接続
-if(!$con=mysql_connect('localhost', 'root', 'root')){
-echo"接続エラー";
-exit;
-}
+<?php
+include_once('db.php');
+$link  = connectDB();
 
-// データベースを選択
-if(!mysql_select_db("newenquete",$con)){
-echo"データベース選択エラー";
-exit;
-}
 $id = $_POST['id'];
 // SELECT文を実行
 $sql = "select gb,kaimono,chian,yachin from result where id = '$id'";
-if(!$res=mysql_query($sql)){
+if(!$res=mysqli_query($link,$sql)){
 echo "SQL実行時エラー";
 exit;
 }
 
 // データの存在チェック
-if(!$row=mysql_fetch_array($res)){
+if(!$row=mysqli_fetch_array($res)){
 echo "データが削除されています";
 exit;
 }
@@ -37,10 +27,7 @@ echo "<input type=submit value=更新>";
 echo "</form>";
 
 // 結果セットの解放
-mysql_free_result($res);
+mysqli_free_result($res);
 
 // データベースから切断
-mysql_close($con);
-?>
-</body>
-</html>
+mysqli_close($link);
