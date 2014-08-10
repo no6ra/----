@@ -23,7 +23,8 @@ if (!$stmt = mysqli_prepare($link, "SELECT id, yachin, gb FROM result WHERE yach
 mysqli_stmt_bind_param($stmt, "i", $yachin);
 // ここまでの操作で$stmtが
 // SELECT id, yachin, gb FROM result WHERE yachin=1
-// として動作する準備が出来ました
+// として動作する準備が出来ました。
+// バインドは英語のままの意味で良く、接続する、のような理解で良いです。
 
 
 /* クエリを実行します */
