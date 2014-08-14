@@ -3,32 +3,32 @@ include_once('db.php');
 $link  = connectDB();
 
 if(!$res=mysqli_query($link,"select id,gb, kaimono, chian, yachin from result")){
-echo "SQLエラー<BR>";
+print "SQLエラー<BR>";
 exit;
 }
 
 // 検索した結果を全部表示
-echo "<table border=1>";
-echo "<tr><td>良い、悪い</td><td>買物便利度</td><td>治安の良さ></td><td>賃料は適切でしたか？</td><td>更新</td><td>削除</td></tr>";
+print "<table border=1>";
+print "<tr><td>良い、悪い</td><td>買物便利度</td><td>治安の良さ></td><td>賃料は適切でしたか？</td><td>更新</td><td>削除</td></tr>";
 while($row=mysqli_fetch_array($res)){
-echo "<tr>";
-echo "<td>". $row["gb"] . "</td>";
-echo "<td>". $row["kaimono"] . "</td>";
-echo "<td>". $row["chian"] . "</td>";
-echo "<td>". $row["yachin"] . "</td>";
+print "<tr>";
+print "<td>". htmlspecialchars($row["gb"],ENT_QUOTES) . "</td>";
+print "<td>". htmlspecialchars($row["kaimono"],ENT_QUOTES) . "</td>";
+print "<td>". htmlspecialchars($row["chian"],ENT_QUOTES) . "</td>";
+print "<td>". htmlspecialchars($row["yachin"],ENT_QUOTES) . "</td>";
 
-echo "<form action=koushin_input.php method=post>";
-echo "<input type=hidden name = id value=" . $row["id"] . ">";
-echo "<td><input type=submit value=更新></td>";
-echo "</form>";
+print "<form action=koushin_input.php method=post>";
+print "<input type=hidden name = id value=" . $row["id"] . ">";
+print "<td><input type=submit value=更新></td>";
+print "</form>";
 
-echo "<form action = sakujo.php method=post>";
-echo "<input type = hidden name = id value=" . $row["id"] . ">";
-echo "<td><input type=submit value=削除></td>";
-echo "</form>";
-echo "</tr>";
+print "<form action = sakujo.php method=post>";
+print "<input type = hidden name = id value=" . $row["id"] . ">";
+print "<td><input type=submit value=削除></td>";
+print "</form>";
+print "</tr>";
 }
-echo "</table>";
+print "</table>";
 
 // 結果セットの解放
 mysqli_free_result($res);
