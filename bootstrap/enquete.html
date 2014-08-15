@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>住まいに関するアンケート</title>
+
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+  </head>
+  <body>
+    <form method="post"  action="newenquete2.php">
+　   <br><strong>Q1:家、町の「春夏秋冬」の感想を教えて下さい。.(各:20文字以上)</strong><br/>
+　　   <br>【春のイイところ(例:窓から桜が見える！)】</br>
+   <textarea name="good/bad" cols="40" rows="10"></textarea>
+　<br>Q2:買物の便利度は？<br/>
+　　<input type="radio" name="kaimono" value="1"> 便利
+　　<input type="radio" name="kaimono" value="2"> 普通
+　　<input type="radio" name="kaimono" value="3"> 不便
+　<br>Q3:治安は？<br/>
+　　<SELECT name="chian">
+　　　<OPTION value="1">良い！！</OPTION>
+　　　<OPTION value="2">普通</OPTION>
+　　　<OPTION value="3">悪い</OPTION>
+　　</SELECT>
+  <br>Q4:家賃は適切でしたか？</br>
+     <input type="checkbox" name="yachin" value="1"> 高い
+     <input type="checkbox" name="yachin" value="2"> 適切
+     <input type="checkbox" name="yachin" value="3"> 安い
+<br>
+<input type="submit" name="sousin" value="送信"></br>
+</form>
+
+
+
+
+
+
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="js/bootstrap.min.js"></script>
+  </body>
+</html>
