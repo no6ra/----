@@ -1,26 +1,18 @@
 <?php
-
-$con = mysql_connect('localhost', 'root', 'root');
-if (!$con) {
-  exit('データベースに接続できませんでした。');
-}
-
-$result = mysql_select_db('newenquete', $con);
-if (!$result) {
-  exit('データベースを選択できませんでした。');
-}
+include_once('db.php');
+$link  = connectDB();
 
 $gb   = $_REQUEST['good/bad'];
 $kaimono = $_REQUEST['kaimono'];
 $chian  = $_REQUEST['chian'];
 $yachin  = $_REQUEST['yachin'];
 
-$result = mysql_query("INSERT INTO result(gb, kaimono, chian, yachin) VALUES('$gb', '$kaimono', '$chian', '$yachin')", $con);
+$result = mysqli_query($link,"INSERT INTO result(gb, kaimono, chian, yachin) VALUES('$gb', '$kaimono', '$chian', '$yachin')");
 if (!$result) {
   exit('データを登録できませんでした。');
 }
 
-$con = mysql_close($con);
+$con = mysqli_close($link);
 if (!$con) {
   exit('データベースとの接続を閉じられませんでした。');
 }
