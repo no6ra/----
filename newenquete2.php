@@ -18,6 +18,6 @@ if (!$con) {
 }
 
 ?>
-<p>登録が完了しました。<br /><a href="newenquete.html">戻る</a></p>
+<p>登録が完了しました。<br /><a href="csrf.enquete.php">戻る</a></p>
 </body>
 </html>

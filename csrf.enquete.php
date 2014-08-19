@@ -1,16 +1,10 @@
 <?php
 session_start();
 require_once( "token.php" );
-if(isset($_POST['send']) != "" ){
-	echo $_POST['send'];
-	{
-    if( check_token( $_POST['token'] ) ){
-        echo "ちゃんと送信されてます。";
-    }else{
+if(isset($_POST['send']) != "" )
+if(!check_token( $_POST['token'] ) ){
         echo "トークンが違います。";
     }
-}
-}
 $harf_token = get_harf_token();
 ?>
 <!DOCTYPE HTML>
