@@ -22,14 +22,4 @@ function get_harf_token(){
     $_SESSION['original_token'] = $original_token;
     return $harf;
     }
-function check_token( $harf_token ){
-    $ch_token = $_SESSION['original_token'];
-    $token = $harf_token.$_SESSION['harf_token'];
-    if( strcmp( $ch_token, $token ) === 0 ){
- 
-        return true;
- 
-    }
- 
-    return false;
-}
+    

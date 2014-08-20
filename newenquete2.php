@@ -1,4 +1,16 @@
 <?php
+session_start();
+
+function check_token( $harf_token ){
+    $ch_token = $_SESSION['original_token'];
+    $token = $harf_token.$_SESSION['harf_token'];
+    if( strcmp( $ch_token, $token ) === 0 ){
+ 
+        return true;
+    }
+    return false;
+}
+
 include_once('db.php');
 $link  = connectDB();
 
@@ -13,11 +25,9 @@ if (!$result) {
 }
 
 $con = mysqli_close($link);
-if (!$con) {
+if (!$link) {
   exit('データベースとの接続を閉じられませんでした。');
 }
 
 ?>
 <p>登録が完了しました。<br /><a href="csrf.enquete.php">戻る</a></p>
-</body>
-</html>
