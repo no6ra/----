@@ -8,10 +8,7 @@ print "SQLエラー<BR>";
 exit;
 }
 
-function h($var) {
-  $html = htmlspecialchars($var, ENT_QUOTES, 'UTF-8');
-  return $html;
-}
+require "common.php";
 
 ?>
 
@@ -31,15 +28,30 @@ function h($var) {
 <td><?php echo(h($row["chian"],ENT_QUOTES))?></td>
 <td><?php echo(h($row["yachin"],ENT_QUOTES))?></td>
 
-<form action=koushin_input.php method=post>
-<input type="hidden" name = "id" value=" . $row["id"] . ">
+<? print "<form action=koushin_input.php method=post>";
+print "<input type=hidden name = id value=" . $row["id"] . ">";
+print "<td><input type=submit value=更新></td>";
+print "</form>";
+
+print "<form action = sakujo.php method=post>";
+print "<input type = hidden name = id value=" . $row["id"] . ">";
+print "<td><input type=submit value=削除></td>";
+print "</form>";
+print "</tr>";
+?>
+
+<!--
+<form action="koushin_input.php" method="post">
+<input type="hidden" name = "id" value=<?php//" . $row["id"] . ";?>>
 <td><input type="submit" value="更新"></td>
 </form>
 
-<form action = sakujo.php method=post>
-<input type = "hidden" name = "id" value=" . $row["id"] . ">
+<form action = "sakujo.php" method="post">
+<input type = "hidden" name = "id" value=<?php//" . $row["id"] . ";?>>
 <td><input type="submit" value="削除"></td>
 </form>
+-->
+
 </tr>
 <?}?>
 </table>
