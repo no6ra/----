@@ -1,4 +1,3 @@
-
 <?php
 include_once('db.php');
 $link  = connectDB();
@@ -28,29 +27,15 @@ require "common.php";
 <td><?php echo(h($row["chian"]))?></td>
 <td><?php echo(h($row["yachin"]))?></td>
 
-<? print "<form action=koushin_input.php method=post>";
-print "<input type=hidden name = id value=" . $row["id"] . ">";
-print "<td><input type=submit value=更新></td>";
-print "</form>";
-
-print "<form action = sakujo.php method=post>";
-print "<input type = hidden name = id value=" . $row["id"] . ">";
-print "<td><input type=submit value=削除></td>";
-print "</form>";
-print "</tr>";
-?>
-
-<!--
 <form action="koushin_input.php" method="post">
-<input type="hidden" name = "id" value=<?php//" . $row["id"] . ";?>>
+<input type="hidden" name = "id" value="<?php echo$row["id"]?>">
 <td><input type="submit" value="更新"></td>
 </form>
 
 <form action = "sakujo.php" method="post">
-<input type = "hidden" name = "id" value=<?php//" . $row["id"] . ";?>>
+<input type = "hidden" name = "id" value="<?php echo$row["id"]?>">
 <td><input type="submit" value="削除"></td>
 </form>
--->
 
 </tr>
 <?}?>
