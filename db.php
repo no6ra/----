@@ -1,7 +1,7 @@
 <?php
 function connectDB(){
 
-if(!$con=mysqli_connect('localhost', 'root', 'root')){
+if(!$con=mysqli_connect('localhost', 'root', 'root', 'newenquete')){
 echo"接続エラー";
 
 }

@@ -1,4 +1,16 @@
 <?php
+session_start();
+
+function check_token( $harf_token ){
+    $ch_token = $_SESSION['original_token'];
+    $token = $harf_token.$_SESSION['harf_token'];
+    if( strcmp( $ch_token, $token ) === 0 ){
+ 
+        return true;
+    }
+    return false;
+}
+
 include_once('db.php');
 $link  = connectDB();
 
