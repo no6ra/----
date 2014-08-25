@@ -11,23 +11,20 @@ function check_token( $harf_token ){
     return false;
 }
 
-include_once('db.php');
-$link  = connectDB();
+include_once('st.db.php');
+
+$sql="UPDATE result SET gb=:gb,kaimono=:kaimono,chian=:chian,yachin=:yachin WHERE id=:id";
+
+$prepare = $db->prepare($sql);
+
+$prepare->bindvalue(":gb",$_POST["gb"], PDO::PARAM_INT);
+$prepare->bindvalue(":kaimono",$_POST["id"], PDO::PARAM_INT);
+$prepare->bindvalue(":chian",$_POST["chian"], PDO::PARAM_INT);
+$prepare->bindvalue(":yachin",$_POST["yachin"], PDO::PARAM_INT);
+$prepare->bindvalue(":id",$_POST["id"], PDO::PARAM_INT);
 
 
-$id = $_POST['id'];
-$gb = $_POST['gb'];
-$kaimono = $_POST['kaimono'];
-$chian = $_POST['chian'];
-$yachin = $_POST['yachin'];
-
-$sql = "update result set gb='$gb' , kaimono='$kaimono' , chian='$chian' , yachin='$yachin' where id =$id";
-if(!$res=mysqli_query($link,$sql)){
-header("Location:sqlerror.php");
-exit;
-}
-
-mysqli_close($link);
+$prepare->execute();
 
 header("Location:kanri.php");
 exit;
